@@ -1,0 +1,10 @@
+@font-face{font-family:'avenir-next-regular';
+	src:url(http://www.peoplepattern.com/wp-content/themes/roadshow/fonts/avenir-next-regular-webfont.eot);
+	src:url(http://www.peoplepattern.com/wp-content/themes/roadshow/fonts/avenir-next-regular-webfont.eot?#iefix)	format("embedded-opentype"),
+	url(http://www.peoplepattern.com/wp-content/themes/roadshow/fonts/avenir-next-regular-webfont.woff2) format("woff2"),
+	url(http://www.peoplepattern.com/wp-content/themes/roadshow/fonts/avenir-next-regular-webfont.woff) format("woff"),
+	url(http://www.peoplepattern.com/wp-content/themes/roadshow/fonts/avenir-next-regular-webfont.ttf) format("truetype"),
+	url(http://www.peoplepattern.com/wp-content/themes/roadshow/fonts/avenir-next-regular-webfont.svg#avenir-next-regularnextRg) format("svg");
+	font-weight:400;
+	font-style:normal
+}

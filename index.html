@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Machine Learning Evaluation with LeVar</title>
+
+		<meta name="description" content="A database to make ML evaluation sane">
+		<meta name="author" content="Elias Ponvert">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/peoplepattern1.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+		<style type="text/css">
+		/* FA 4.0.0 and newer */
+		.reveal .fa {
+		  font-family: 'FontAwesome';
+		}
+
+		/* FA 3.2.1 and older */
+		.reveal [class^="icon-"],
+		.reveal [class*=" icon-"]  {
+		  font-family: 'FontAwesome';
+		}
+		</style>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+<section>
+	<h1>Machine Learning Evaluation with LeVar</h1>
+	<p>A database to make ML evaluation sane</p>
+	<div style="margin-top: 40px;">
+		<h3 class="author">Elias Ponvert</h3>
+		<p>
+			<small>
+				director of data science at
+			</small>
+		</p>
+		<a href="http://peoplepattern.com">
+			<img src="img/pplogo.png" alt="People Pattern Corporation" style="border: 0; box-shadow: none;" width=300>
+		</a>
+	</div>
+	<p style="margin-top: 20px;">
+			<a href="mailto:elias@peoplepattern.com"><samp class="fa fa-envelope"></samp></a>
+			<a href="https://github.com/peoplepattern" target="_blank"><samp class="fa fa-github"></samp></a>
+			<a href="https://twitter.com/peoplepattern" target="_blank"><samp class="fa fa-twitter"></samp></a>
+			<a href="https://www.linkedin.com/company/people-pattern" target="_blank"><samp class="fa fa-linkedin"></samp></a>
+	</p>
+</section>
+
+<section>
+	<section>
+		<h1>Hello<br>Pre Data Science Pop-up!</h1>
+	</section>
+
+	<section>
+		<h1>Hello also<br>Austin Data Science Meetup!</h1>
+	</section>
+
+	<section>
+		<h2>What this talk is about</h2>
+
+		<ul>
+			<li>
+				Machine learning evaluation is a pain, and in my experience we're
+				all terrible at it
+
+			<li>
+				Here's what we should do instead
+
+			<li>
+				Say hello to <a href=https://github.com/peoplepattern/LeVar>LeVar</a>,
+				a database designed to help us do what we should do
+		</ul>
+	</section>
+
+	<section>
+		<h2>Some more about LeVar</h2>
+
+		<ul>
+			<li><em>Demo!</em>
+			<li>A bit about how it's implemented, if you're interested
+			<li>Open issues and next steps
+		</ul>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h1>Machine learning evaluation is a pain and we're all terrible at it</h1>
+	</section>
+
+	<section>
+		<small>Quick show of hands, does anybody disagree with this statement?</small>
+	</section>
+
+	<section>
+		<h2>Evaluation is important</h2>
+
+		<ul>
+			<li>Evaluate early, evaluate often
+			<li>Keep a lab notebook
+			<li>Evaluate every change
+			<li>Do error analysis
+			<li>Change your model based on evidence
+		</ul>
+	</section>
+
+	<section>
+		<h2>But what happens</h2>
+
+		<ul>
+			<li>No standard source, storage or format for eval
+			<li>End up rewriting our evaluation scripts for each project
+			<li>Couple our evaluation code with our core ML code
+			<li>Error analysis is a pain
+			<li>Hard to track results on the <em>same</em> evaluation over time
+			<li>Harder to to comparative error analysis over time
+		</ul>
+	</section>
+</section>
+
+<section>
+	<section><h1>Our solution</h1></section>
+
+	<section>
+		<h2>We can do better</h2>
+		<ul>
+			<li>Keep evaluation datasets in a centralized location
+			<li>Evaluations are largely immutable
+			<li>Not tied to any one ML framework (e.g. scikit)
+			<li>...or big data framework (e.g. RDDs)
+			<li><em>Totally</em> agnostic WRT to method
+			<li>Human-readable datasets
+			<li>Use simple and common format for data exchange
+			<li>Open schema for data points, i.e. arbitrary features
+		</ul>
+	</section>
+
+	<section>
+		<h2>We can do better</h2>
+		<ul>
+			<li>Command-line tool for data import &amp; power users
+			<li>Several standard problem schema supported
+				<ul>
+					<li>Classification
+					<li>Regression
+					<li>Geo-prediction
+					<li>Structure prediction
+					<li>Machine translation
+				</ul>
+			<li>Several standard useful evaluation criteria supported
+				<ul>
+					<li>Accuracy
+					<li>Precision/recall/F-score
+					<li>ROC
+					<li>RMSE...
+				</ul>
+		</ul>
+	</section>
+
+	<section>
+		<h2>We can do better</h2>
+		<ul>
+			<li>Web UI showing high-level experiment results suitable for bosses
+				or clients
+			<li>Web UI &amp; CLI search for error analysis
+			<li>User can comment on anything:
+				<ul>
+					<li>Dataset
+					<li>Experiment
+					<li>Item in dataset
+					<li>Individual prediction in experiment
+					<li>Another comment
+				</ul>
+			<li>User can label anything
+		</section>
+
+		<section>
+			<h2>We can do better</h2>
+			<ul>
+				<li>Sensible information architecture
+					<ul>
+						<li>Organize datasets into groups or organizations
+					</ul>
+				<li>Provide sensible baseline evaluations out-of-the-box
+					<ul>
+						<li>Most-common class
+						<li>Mean value
+						<li>(Weighted) random
+					</ul>
+			</ul>
+	</section>
+
+	<section>
+		<h2>We can do better</h2>
+		<ul>
+			<li>REST API to use with <em>your</em> favorite framework
+			<li>Straightforward client libraries
+			<li>Export and import to other formats (yo RDD)
+		</ul>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h1>Introducing LeVar</h1>
+
+		<p>It does several of those things!</p>
+
+		<p>But don't freak it's just v0.1</p>
+	</section>
+
+	<section>
+		<h2>Here's what's done now</h2>
+
+		<ul>
+			<li>CLI (in Scala)
+			<li>Import/export TSV
+			<li>Organizations data model
+			<li>API for everything, using basic auth
+			<li>Client code for Scala
+			<li>Classification &amp; regression datasets
+			<li>Many useful evaluations
+		<ul>
+	</section>
+
+	<section>
+		<h2>LeVar data model</h2>
+
+		<ul>
+			<li>Datasets
+			<li>Items (datum)
+			<li>Experiments
+			<li>Predictions
+		</ul>
+
+		<p>Everything has a creation date; everything has a UUID</p>
+
+		<p>
+			The data model should support most of those
+			other features, so I can already do e.g. error
+			analysis by dropping into <code>psql</code>
+			and writing a query
+		</p>
+	</section>
+
+	<section>
+		<h2>On Github <samp class="fa fa-github"></samp></h2>
+
+		<p>
+			<a href="https://github.com/peoplepattern/LeVar" target="_blank">https://github.com/peoplepattern/LeVar</a>
+	</section>
+
+	<section><h1>Demo?</h1></section>
+
+	<section>
+		<img src=img/screen1.png alt="Demo image uploading a dataset" style="border: 0;" height=400/>
+	</section>
+
+	<section>
+		<img src=img/screen2.png alt="Demo image uploading an experiment" style="border: 0;" height=400/>
+	</section>
+
+	<section>
+		<h2>Future directions</h2>
+		<p>
+			Let's just jump over to the <samp class="fa fa-github"></samp> issues page
+
+		<p>
+			<a href="https://github.com/peoplepattern/LeVar/issues" target="_blank">https://github.com/peoplepattern/LeVar/issues</a>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h1>THANKS!</h1>
+	</section>
+</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				parallaxBackgroundImage: 'img/vespanaut.png',
+				parallaxBackgroundPosition: 'bottom right',
+				parallaxBackgroundSize: '700px 600px',
+				parallaxBackgroundRepeat: 'no-repeat',
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
